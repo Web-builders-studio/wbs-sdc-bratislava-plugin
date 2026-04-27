@@ -1,0 +1,9 @@
+{
+  "_comment": "Pointer-Datei fuer den self-hosted Update-Feed. Diese Datei dient als statische Referenz fuer Hoster-Support-Cases und als Fallback, falls der Plugin-Update-Checker (puc) Hook fehlschlaegt. Spec: prototypes/solution-day-connect-bratislava/_planning/05-WP-PLUGIN-SPEC.md, §8 + Appendix B.",
+  "name": "WBS — SDC Bratislava 2026",
+  "slug": "wbs-sdc-bratislava",
+  "vendor": "web-builders.studio",
+  "metadata_url": "https://github.com/web-builders-studio/wbs-sdc-bratislava-plugin/releases.atom",
+  "support": "https://web-builders.studio/support",
+  "contact": "team@web-builders.studio"
+}

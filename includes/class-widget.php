@@ -1,8 +1,11 @@
 <?php
 /**
- * Elementor-Widget: WBS — Solution Day Connect (Bratislava 2026).
+ * Optional Elementor-Widget Bridge.
  *
- * Spec: prototypes/solution-day-connect-bratislava/_planning/05-WP-PLUGIN-SPEC.md, §4
+ * REFACTOR Pass 4 Phase 2A: Elementor ist NICHT mehr Pflicht-Dependency.
+ * Dieses Widget wird nur registriert, wenn das Elementor-Plugin aktiv ist.
+ * Der eigentliche Render delegiert an den Shortcode → identisches Output
+ * wie ueber Block + [sdc_bratislava].
  *
  * @package WBS\SDC
  */
@@ -11,6 +14,10 @@ namespace WBS\SDC;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+if ( ! class_exists( '\Elementor\Widget_Base' ) ) {
+	return; // Wird nur erreicht, wenn Elementor wirklich aktiv ist.
 }
 
 class Widget extends \Elementor\Widget_Base {
@@ -36,7 +43,8 @@ class Widget extends \Elementor\Widget_Base {
 	}
 
 	/**
-	 * Keine Controls in v1.0 — Settings-Page kommt in Phase 2.5.
+	 * Keine Controls in v1.0 — Inhalte werden via Plugin-Update gepflegt
+	 * (statisch-fixed, R3=lassen).
 	 */
 	protected function register_controls() {
 		$this->start_controls_section(
@@ -51,8 +59,12 @@ class Widget extends \Elementor\Widget_Base {
 			array(
 				'type' => \Elementor\Controls_Manager::RAW_HTML,
 				'raw'  => '<p><strong>SDC Bratislava 2026 Landingpage</strong></p>'
-						. '<p>Dieses Widget rendert die komplette Event-Landingpage. '
-						. 'Inhalte werden in Phase 2.5 ueber eine Settings-Page editierbar.</p>',
+						. '<p>' . esc_html__(
+							'Dieses Widget rendert die komplette Event-Landingpage.'
+							. ' Inhalte sind statisch-fixed und werden via Plugin-Update gepflegt.'
+							. ' Alternative Mounts: Shortcode [sdc_bratislava] und Gutenberg-Block.',
+							'wbs-sdc-bratislava'
+						) . '</p>',
 			)
 		);
 
@@ -60,52 +72,30 @@ class Widget extends \Elementor\Widget_Base {
 	}
 
 	/**
-	 * Frontend-Render: Mount-Div + Initialisierungs-Script.
-	 * Assets werden via class-asset-loader.php enqueued (nicht inline).
+	 * Frontend-Render: delegiert an Shortcode.
+	 * Asset-Enqueue erfolgt automatisch via Asset_Loader::mark_present().
 	 */
 	protected function render() {
-		$mount_id = 'sdcb-root';
-		?>
-		<div id="<?php echo esc_attr( $mount_id ); ?>" class="wbs-sdc-mount" data-version="<?php echo esc_attr( WBS_SDC_VERSION ); ?>"></div>
-		<script>
-			(function () {
-				var selector = '#<?php echo esc_js( $mount_id ); ?>';
-				if (window.SDCBratislava && typeof window.SDCBratislava.mount === 'function') {
-					window.SDCBratislava.mount(selector);
-				} else {
-					document.addEventListener('sdc-bratislava:ready', function () {
-						if (window.SDCBratislava && typeof window.SDCBratislava.mount === 'function') {
-							window.SDCBratislava.mount(selector);
-						}
-					});
-				}
-			})();
-		</script>
-		<?php
+		echo do_shortcode( '[' . Shortcode::TAG . ']' );
 	}
 
 	/**
-	 * Editor-Preview: identisch zu render() — Elementor laedt das Bundle im Iframe.
+	 * Editor-Preview: Placeholder-Div, damit Elementor-Editor schnell laedt.
+	 * Echter Render passiert beim Frontend-Output.
 	 */
 	protected function content_template() {
 		?>
-		<div id="sdcb-root" class="wbs-sdc-mount"></div>
+		<div class="wbs-sdc-mount-preview" style="
+			border: 2px dashed #A64D79;
+			padding: 2rem;
+			text-align: center;
+			background: #F5ECF1;
+			color: #1A0F1F;
+			font-family: system-ui, sans-serif;
+		">
+			<strong>SDC Bratislava 2026</strong>
+			<p style="margin-top: 0.5rem;">{{{ "Live-Preview im Frontend" }}}</p>
+		</div>
 		<?php
 	}
 }
-
-/**
- * Eigene Elementor-Kategorie registrieren.
- */
-add_action(
-	'elementor/elements/categories_registered',
-	function ( $elements_manager ) {
-		$elements_manager->add_category(
-			'wbs-sdc',
-			array(
-				'title' => __( 'WBS — Solution Day Connect', 'wbs-sdc-bratislava' ),
-				'icon'  => 'fa fa-plug',
-			)
-		);
-	}
-);

@@ -99,7 +99,13 @@ add_action( 'plugins_loaded', function () {
 	require_once WBS_SDC_DIR . 'includes/class-asset-loader.php';
 	require_once WBS_SDC_DIR . 'includes/class-shortcode.php';
 	require_once WBS_SDC_DIR . 'includes/class-block.php';
+	require_once WBS_SDC_DIR . 'includes/class-seo-injector.php';
 	require_once WBS_SDC_DIR . 'includes/class-plugin.php';
+
+	// Settings-Page nur im Admin laden.
+	if ( is_admin() ) {
+		require_once WBS_SDC_DIR . 'includes/class-settings-page.php';
+	}
 
 	// Plugin-Singleton initialisiert alle Hooks.
 	\WBS\SDC\Plugin::get_instance();

@@ -33,6 +33,16 @@ class Plugin {
 	public $shortcode;
 
 	/**
+	 * @var SEO_Injector
+	 */
+	public $seo_injector;
+
+	/**
+	 * @var Settings_Page|null
+	 */
+	public $settings_page = null;
+
+	/**
 	 * Singleton-Accessor.
 	 */
 	public static function get_instance() {
@@ -48,6 +58,12 @@ class Plugin {
 	private function __construct() {
 		$this->asset_loader = new Asset_Loader();
 		$this->shortcode    = new Shortcode();
+		$this->seo_injector = new SEO_Injector();
+
+		// Settings-Page nur im Admin instanziieren (Class wird im Bootstrap konditional geladen).
+		if ( is_admin() && class_exists( __NAMESPACE__ . '\\Settings_Page' ) ) {
+			$this->settings_page = new Settings_Page();
+		}
 
 		// Block-Registration laeuft auf `init`-Hook (von Block::register intern angemeldet).
 		add_action( 'init', array( Block::class, 'register' ) );

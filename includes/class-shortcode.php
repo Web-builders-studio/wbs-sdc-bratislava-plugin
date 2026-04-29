@@ -58,7 +58,7 @@ class Shortcode {
 
 		ob_start();
 		?>
-		<div class="wbs-sdc-isolation-wrapper sdc-isolation" data-version="<?php echo esc_attr( $version ); ?>">
+		<div class="wbs-sdc-isolation-wrapper sdc-isolation alignfull" data-version="<?php echo esc_attr( $version ); ?>">
 			<div id="<?php echo esc_attr( $mount_id ); ?>" class="wbs-sdc-mount"></div>
 			<script data-no-optimize="1" data-cfasync="false">
 				(function () {

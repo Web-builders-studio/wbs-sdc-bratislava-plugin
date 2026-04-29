@@ -112,11 +112,18 @@ class Isolation {
 .wbs-sdc-isolation-wrapper {
 	/* Stacking-Context: z-index-Werte innen sind relativ zu diesem Wrapper. */
 	isolation: isolate;
-	/* Theme-Container-Zwang aufheben. */
-	max-width: none;
-	width: 100%;
-	margin: 0;
+	/*
+	 * Full-Viewport-Breakout: Theme-Content-Container haben typisch max-width 620-1240px.
+	 * Wir brechen mit `margin: calc(50% - 50vw)` aus dem Parent-Container aus und spannen
+	 * 100vw — die SDC-Page ist als Landingpage designed, nicht als Inhalt-im-Blog-Post.
+	 * Funktioniert auf Classic + Block-Themes; `.alignfull` Klasse ist Block-Theme-Hint.
+	 */
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	width: 100vw;
+	max-width: 100vw;
 	padding: 0;
+	overflow-x: clip;
 	/* Kontrollierte Vererbung. */
 	color: var(--client-text-body, #3D3344);
 	font-family: var(--client-font-body, 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif);

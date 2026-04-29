@@ -4,7 +4,7 @@ Tags: event, landingpage, linkedworld, sap, gutenberg-block
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,6 +56,10 @@ Self-hosted-Fonts laden ohne externe Anfragen. Die HubSpot-Form (Lead-Capture in
 Plugin-Update-Checker prüft `web-builders-studio/wbs-sdc-bratislava-plugin` GitHub-Releases. Bei einer neuen Release-Tag-Version erscheint im WP-Admin der gewohnte Update-Hinweis.
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix: Full-Viewport-Breakout im Isolation-Wrapper — Theme-Content-Container (max-width 620–1240px) kollabierte die Landing-Page auf Mobile-Layout. Wrapper sprengt jetzt mit `margin: calc(50% - 50vw); width: 100vw` aus dem Theme-Container aus.
+* Fix: `alignfull` Klasse am Wrapper als Hint für Block-Themes (Twenty Twenty-Five etc.).
 
 = 1.0.0 =
 * Initial release.

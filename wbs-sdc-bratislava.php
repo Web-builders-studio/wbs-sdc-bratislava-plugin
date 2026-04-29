@@ -6,7 +6,7 @@
  *                    (LinkedWorld AG, DoubleTree by Hilton Bratislava, June 10-11).
  *                    Self-contained React-Bundle. Shortcode [sdc_bratislava] und
  *                    Gutenberg-Block. Optional Elementor-Widget.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            web-builders.studio
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin-Constants. Build-Path-Konvention: WP nutzt `build/` (nicht `dist/`).
  */
-define( 'WBS_SDC_VERSION',     '1.0.0' );
+define( 'WBS_SDC_VERSION',     '1.0.1' );
 define( 'WBS_SDC_FILE',        __FILE__ );
 define( 'WBS_SDC_DIR',         plugin_dir_path( __FILE__ ) );
 define( 'WBS_SDC_URL',         plugin_dir_url( __FILE__ ) );

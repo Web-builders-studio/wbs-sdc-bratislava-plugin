@@ -129,15 +129,17 @@ add_action( 'plugins_loaded', function () {
 } );
 
 /**
- * Plugin Update Checker (yahnis-elliott/plugin-update-checker v5.x).
+ * Plugin Update Checker (YahnisElsts/plugin-update-checker v5.6).
  *
- * Vendored unter `includes/plugin-update-checker/` via Composer:
+ * Vendored direkt unter `includes/plugin-update-checker/` (kein Composer).
+ * Library-Repo: https://github.com/YahnisElsts/plugin-update-checker
+ * Vendored-Version: v5.6 (License: MIT, siehe includes/plugin-update-checker/license.txt)
  *
- *   composer require yahnis-elliott/plugin-update-checker:^5.4
+ * Update-Quelle: GitHub-Releases von wbs-sdc-bratislava-plugin/.
+ * Branch `main` als Source-of-Truth, ZIP-Asset wird als Plugin-Update angeboten.
  *
- * Wir laden den Checker erst auf priority 20, damit Composer/Autoloader
- * (falls vorhanden) bereits initialisiert sind. Silent-skip wenn Lib fehlt
- * (z.B. in Dev-Builds, in denen Lib nicht vendored wurde).
+ * Priority 20: nach Plugin-Bootstrap (priority 10), damit alle Konstanten geladen sind.
+ * Silent-skip wenn Lib fehlt (z.B. fuer Dev-Builds ohne Vendoring).
  */
 add_action( 'plugins_loaded', function () {
 	$puc_path = WBS_SDC_DIR . 'includes/plugin-update-checker/plugin-update-checker.php';
@@ -147,15 +149,17 @@ add_action( 'plugins_loaded', function () {
 
 	require_once $puc_path;
 
-	if ( ! class_exists( '\YahnisElliott\PluginUpdateChecker\v5\PucFactory' ) ) {
+	if ( ! class_exists( '\YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
 		return;
 	}
 
-	$update_checker = \YahnisElliott\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+	$update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
 		'https://github.com/web-builders-studio/wbs-sdc-bratislava-plugin/',
 		WBS_SDC_FILE,
 		'wbs-sdc-bratislava'
 	);
+
+	// VCS-API: GitHub. Release-Assets (ZIPs) statt Branch-Tarball verwenden.
 	$update_checker->getVcsApi()->enableReleaseAssets();
 	$update_checker->setBranch( 'main' );
 }, 20 );

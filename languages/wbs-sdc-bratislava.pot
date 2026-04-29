@@ -1,0 +1,103 @@
+# Copyright (C) 2026 WBS SDC Bratislava
+# This file is distributed under the same license as the WBS SDC Bratislava package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WBS SDC Bratislava\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: web-builders.studio <admin@web-builders.studio>\n"
+"Last-Translator: web-builders.studio <admin@web-builders.studio>\n"
+"POT-Creation-Date: 2026-04-29 06:19+0000\n"
+"Report-Msgid-Bugs-To: https://github.com/web-builders-studio/wbs-sdc-bratislava-plugin/issues\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: wbs-sdc-bratislava.legacy.php:33
+msgid "WBS — SDC Bratislava benoetigt das Elementor-Plugin (mind. v3.20)."
+msgstr ""
+
+#: wbs-sdc-bratislava.php:49
+msgid "WBS — SDC Bratislava benoetigt PHP 7.4 oder hoeher."
+msgstr ""
+
+#: wbs-sdc-bratislava.php:123, includes/class-widget.legacy.php:23, includes/class-widget.legacy.php:106, includes/class-widget.php:30
+msgid "WBS — Solution Day Connect"
+msgstr ""
+
+#: includes/class-settings-page.php:39, includes/class-settings-page.php:234
+msgid "SDC Bratislava 2026"
+msgstr ""
+
+#: includes/class-settings-page.php:40
+msgid "SDC Bratislava"
+msgstr ""
+
+#: includes/class-settings-page.php:59
+msgid "SEO & Event Metadata"
+msgstr ""
+
+#: includes/class-settings-page.php:66
+msgid "Meta-Title"
+msgstr ""
+
+#: includes/class-settings-page.php:74
+msgid "Meta-Description"
+msgstr ""
+
+#: includes/class-settings-page.php:82
+msgid "OG-Image URL (1200×630)"
+msgstr ""
+
+#: includes/class-settings-page.php:90
+msgid "Event-Start (ISO 8601)"
+msgstr ""
+
+#: includes/class-settings-page.php:98
+msgid "Event-Ende (ISO 8601)"
+msgstr ""
+
+#: includes/class-settings-page.php:106
+msgid "Diese Felder werden im <head>-Bereich der SDC-Page injected (Meta-Tags + JSON-LD Event-Schema). Inhalte der Page selbst sind im React-Bundle hartkodiert und werden über Plugin-Updates ausgerollt."
+msgstr ""
+
+#: includes/class-settings-page.php:123
+msgid "Empfohlen: 50–60 Zeichen. Wird auch als Twitter-Card-Titel verwendet."
+msgstr ""
+
+#: includes/class-settings-page.php:132
+msgid "Empfohlen: 140–160 Zeichen. Wird in Google-Snippets, OG-Cards und JSON-LD verwendet."
+msgstr ""
+
+#: includes/class-settings-page.php:141
+msgid "Format: 1200×630 px (LinkedIn/Slack/X), JPG/PNG/WebP. Leer = kein OG-Image."
+msgstr ""
+
+#: includes/class-settings-page.php:150
+msgid "ISO-8601 mit Timezone-Offset. Beispiel: 2026-06-10T08:00:00+02:00."
+msgstr ""
+
+#. translators: %s: Feldname (event_date_iso oder event_end_iso)
+#: includes/class-settings-page.php:198
+msgid "%s ist kein gültiges ISO-8601-Datum. Vorheriger Wert wurde beibehalten."
+msgstr ""
+
+#: includes/class-settings-page.php:214
+msgid "Event-Ende liegt vor Event-Start. Vorheriger Wert wurde beibehalten."
+msgstr ""
+
+#: includes/class-settings-page.php:230
+msgid "Unzureichende Berechtigungen."
+msgstr ""
+
+#: includes/class-settings-page.php:236
+msgid "Plugin-Version:"
+msgstr ""
+
+#: includes/class-widget.legacy.php:45, includes/class-widget.php:53
+msgid "Hinweis"
+msgstr ""
